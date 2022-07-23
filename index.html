@@ -2,18 +2,19 @@
 <html>
   <head>
     <title>Zoo</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <ul>
-      <li><a href="sections.php">Sections</a></li>
-      <li><a href="#">Enclosures</a></li>
-      <li><a href="#">Animals</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Guests</a></li>
-      <li><a href="#">Employees</a></li>
+    <ul class="nav-list">
+      <li class="nav-item"><a class="nav-link clicked" href="index.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="sections.php">Sections</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Enclosures</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Animals</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Guests</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Employees</a></li>
     </ul> 
-    <form action="classificationsQuery.php" method="post">
-      <input type="submit" value="show values for table classifications">
-    </form>
+    <h1>Dashboard</h1>
+    <h2>(summary data and useful info)</h2>
   </body>
 </html>
