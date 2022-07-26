@@ -41,7 +41,8 @@ if ($result->num_rows > 0) {
         ";
     }
     echo "</table>";
-    echo "<br><a href='AddEnclosure.html'>Add Enclosure</a>";
+    echo "<br><a href='AddEnclosureForm.php'>Add Enclosure</a>";
+    echo "<br><a href='AddEnvironmentForm.php'>Add Environment</a>";
 } else {
     echo "0 results";
 }
