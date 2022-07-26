@@ -26,15 +26,14 @@ if (isset($_GET['back'])) {
     $back = $_GET['back'];
 }
 
-echo "<a href='$back'>Go back</a>";
+echo "<a href='$back'>Go back</a><br>";
 
 $sql = "DELETE FROM $table WHERE $col='$val'";
-
-echo "query is $sql";
 $result = $conn->query($sql);
 
 if (!$result) {
-    echo "Delete Error.";
+    echo "Deletion Error:";
+    echo "<br>";
     echo $conn->error;
 }
 

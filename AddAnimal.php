@@ -16,6 +16,13 @@ $Genus = $_POST['Genus'];
 $sql = "INSERT INTO `animals` (`AnimalID`, `Sex`, `GivenName`, `Weight`, `DateBorn`, `EnclosureNum`, `SectionName`, `Species`, `Genus`) VALUES ('$AnimalID', '$Sex', '$GivenName','$Weight', '$DateBorn', '$EnclosureNum', '$SectionName', '$Species', '$Genus')";
 $result = $conn->query($sql);
 
-header('Location: Animals.php'); 
+if (!$result) {
+    echo "Error:";
+    echo "<br>";
+    echo $conn->error;
+}
+else {
+    header('Location: Animals.php'); 
+}
 
 ?>

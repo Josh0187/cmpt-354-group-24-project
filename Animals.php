@@ -16,7 +16,7 @@ echo "
     <li class='nav-item'><a class='nav-link' href='#'>Guests</a></li>
     <li class='nav-item'><a class='nav-link' href='#'>Employees</a></li>
 </ul> 
-<h1>Zoo Animals:</h1>
+<h1>Animals:</h1>
 ";
 
 if ($result->num_rows > 0) {
