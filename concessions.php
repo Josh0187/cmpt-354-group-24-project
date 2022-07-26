@@ -19,25 +19,25 @@ echo "
 // if sectionName given, query only giftshops in given sectionName
 if (isset($_GET['sectionName'])) {
     $sectionName = $_GET['sectionName'];
-    $sql = "SELECT * FROM giftshops WHERE SectionName='$sectionName'";
+    $sql = "SELECT * FROM concessions WHERE SectionName='$sectionName'";
 }
 // otherwise get all giftshops
 else {
     $sectionName = "All Sections";
-    $sql = "SELECT * FROM giftshops";
+    $sql = "SELECT * FROM concessions";
 }
 
 $result = $conn->query($sql);
 
 echo "
-    <h1>Giftshops in section: $sectionName</h1>
+    <h1>Concessions in section: $sectionName</h1>
 ";
 
 if ($result->num_rows > 0) {
     echo "
     <table>
     <tr>
-        <th class='border-class'>Giftshop Number</th>
+        <th class='border-class'>Concession Number</th>
         <th class='border-class'>Section Name</th>
     </tr>
     ";
@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "
             <tr>
-                <td class='border-class'>".$row["GiftshopNum"]."</td>
+                <td class='border-class'>".$row["ConcessionNum"]."</td>
                 <td class='border-class'>".$row["SectionName"]."</td>
             </tr>
         ";

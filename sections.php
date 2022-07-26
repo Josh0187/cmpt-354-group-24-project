@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
                 <td class='border-class'>".$row["SectionName"]."</td>
                 <td class='border-class'>".$row["SectionSize"]."</td>
                 <td><a href='giftshops.php/?sectionName=".$row["SectionName"]."'>Giftshops</a><td>
-                <td><a href='#'>Concessions</a></td>
+                <td><a href='concessions.php/?sectionName=".$row["SectionName"]."'>Concessions</a></td>
                 <td><a href='enclosures.php/?sectionName=".$row["SectionName"]."'>Enclosures</a></td>
                 <td><a href='delete.php?table=zoosections&col=SectionName&val=".$row["SectionName"]."&back=sections.php'>Delete</a></td>
             </tr>
