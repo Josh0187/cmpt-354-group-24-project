@@ -62,6 +62,7 @@ if ($result->num_rows > 0) {
                 <td class='border-class'>".$row["SectionName"]."</td>
                 <td class='border-class'>".$row["EnclosureSize"]."</td>
                 <td class='border-class'>".$row["EnvironmentName"]."</td>
+                <td class='border-class'><a href='updateEnclosureForm.php/?sectionName=".$row["SectionName"]."&enclosureNum=".$row["EnclosureNum"]."'>Update</a></td>
             </tr>
         ";
     }
