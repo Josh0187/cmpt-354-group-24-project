@@ -7,10 +7,12 @@ $sectionName = $_POST['sectionName'];
 $sectionSize = $_POST['sectionSize'];
 
 $sql = "INSERT INTO zoosections VALUES ('$sectionName', $sectionSize)";
+$result = $conn->query($sql);
 
-if (!$conn->query($sql)) {
-    echo "<script>alert('Something went wrong, please try again.');</script>";
-    header('Location: createSection.html');
+if ($result) {
+    echo "Error:";
+    echo "<br>";
+    echo $conn->error;
 }
 else {
     header('Location: sections.php');
