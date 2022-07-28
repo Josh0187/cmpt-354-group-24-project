@@ -12,7 +12,7 @@
 ?>
 <link rel='stylesheet' href='../styles.css'>
 <ul class='nav-list'>
-    <li class='nav-item'><a class='nav-link' href='../index.html'>Dashboard</a></li>
+    <li class='nav-item'><a class='nav-link' href='../index.php'>Dashboard</a></li>
     <li class='nav-item'><a class='nav-link' href='../sections.php'>Sections</a></li>
     <li class='nav-item'><a class='nav-link' href='../enclosures.php'>Enclosures</a></li>
     <li class='nav-item'><a class='nav-link clicked' href='../animals.php'>Animals</a></li>
