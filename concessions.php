@@ -11,8 +11,8 @@ echo "
     <li class='nav-item'><a class='nav-link' href='../enclosures.php'>Enclosures</a></li>
     <li class='nav-item'><a class='nav-link' href='../Animals.php'>Animals</a></li>
     <li class='nav-item'><a class='nav-link' href='#'>Events</a></li>
-    <li class='nav-item'><a class='nav-link' href='#'>Guests</a></li>
-    <li class='nav-item'><a class='nav-link' href='#'>Employees</a></li>
+    <li class='nav-item'><a class='nav-link' href='../guest.php'>Guests</a></li>
+    <li class='nav-item'><a class='nav-link' href='#'>../employees.php</a></li>
 </ul>
 ";
 

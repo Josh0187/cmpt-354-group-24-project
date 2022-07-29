@@ -1,9 +1,9 @@
 <?php
 include 'connect.php';
 $conn = OpenCon();
-$sql_salesworkers = "SELECT * FROM salesworkers";
+$sql_salesworkers = "SELECT * FROM salesworker";
 $sql_zookeepers = "SELECT * FROM zookeepers";
-$sql_managers = "SELECT * FROM managers";
+$sql_managers = "SELECT * FROM manager";
 
 $result_salesworkers = $conn->query($sql_salesworkers);
 $result_zookeepers = $conn->query($sql_zookeepers);
@@ -47,7 +47,19 @@ if ($result_salesworkers->num_rows > 0) {
     </tr>
     ";
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $result_salesworkers->fetch_assoc()) {
+
+        // if value is null set it to N/A
+        if ($row['GiftShopNum'] === NULL) {
+            $row['GiftShopNum'] = "N/A";
+        }
+        if ($row['ConcessionNum'] === NULL) {
+            $row['ConcessionNum'] = "N/A";
+        }
+        if ($row['BoothNum'] === NULL) {
+            $row['BoothNum'] = "N/A";
+        }
+
         echo "
             <tr>
                 <td class='border-class'>".$row["EmployeeID"]."</td>
@@ -65,7 +77,6 @@ if ($result_salesworkers->num_rows > 0) {
         ";
     }
     echo "</table>";
-    echo "<br><a href='#'>Add Sales Worker</a><br>";
 } else {
     echo "0 results";
 }
@@ -73,7 +84,7 @@ if ($result_salesworkers->num_rows > 0) {
 // display zookeepers
 if ($result_zookeepers->num_rows > 0) {
     echo "
-    <h1>Sales Workers:</h1>
+    <h1>Zookeepers:</h1>
     <table>
     <tr>
         <th class='border-class'>EmployeeID</th>
@@ -88,7 +99,7 @@ if ($result_zookeepers->num_rows > 0) {
     </tr>
     ";
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $result_zookeepers->fetch_assoc()) {
         echo "
             <tr>
                 <td class='border-class'>".$row["EmployeeID"]."</td>
@@ -104,11 +115,42 @@ if ($result_zookeepers->num_rows > 0) {
         ";
     }
     echo "</table>";
-    echo "<br><a href='#'>Add Sales Worker</a>";
 } else {
     echo "0 results";
 }
 
-
+// display managers
+if ($result_managers->num_rows > 0) {
+    echo "
+    <h1>Managers:</h1>
+    <table>
+    <tr>
+        <th class='border-class'>EmployeeID</th>
+        <th class='border-class'>PhoneNum</th>
+        <th class='border-class'>EmployeeFirstName</th>
+        <th class='border-class'>EmployeeLastName</th>
+        <th class='border-class'>HireDate</th>
+        <th class='border-class'>EmployeeAge</th>
+        <th class='border-class'>SectionName</th>
+    </tr>
+    ";
+    // output data of each row
+    while($row = $result_managers->fetch_assoc()) {
+        echo "
+            <tr>
+                <td class='border-class'>".$row["EmployeeID"]."</td>
+                <td class='border-class'>".$row["PhoneNum"]."</td>
+                <td class='border-class'>".$row["EmployeeFirstName"]."</td>
+                <td class='border-class'>".$row["EmployeeLastName"]."</td>
+                <td class='border-class'>".$row["HireDate"]."</td>
+                <td class='border-class'>".$row["EmployeeAge"]."</td>
+                <td class='border-class'>".$row["SectionName"]."</td>
+            </tr>
+        ";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
 CloseCon($conn);
 ?>
