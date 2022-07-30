@@ -5,7 +5,7 @@ $conn = OpenCon();
 
 // nav bar
 echo "
-<link rel='stylesheet' href='styles.css'>
+<link rel='stylesheet' href='styles.css?version=2'>
 <ul class='nav-list'>
     <li class='nav-item'><a class='nav-link' href='index.php'>Dashboard</a></li>
     <li class='nav-item'><a class='nav-link' href='sections.php'>Sections</a></li>
@@ -32,17 +32,20 @@ if (!$result) {
 //  	GuestID 	Gender 	GuestPhoneNum 	GuestAge 	GuestName
 if ($result->num_rows > 0) {
     echo "
-    <table>
-    <tr>
-        <th class='border-class'></th>
-        <th class='border-class'>GuestID</th>
-        <th class='border-class'>Gender</th>
-        <th class='border-class'>PhoneNum</th>
-        <th class='border-class'>Age</th>
-        <th class='border-class'>Name</th>
-        <th class='border-class'>MembershipType</th>
-        <th class='border-class'>ExpiryDate</th>
-    </tr>
+    <table class='table-style'>
+    <thead>
+        <tr>
+            <th class='border-class'></th>
+            <th class='border-class'>GuestID</th>
+            <th class='border-class'>Gender</th>
+            <th class='border-class'>PhoneNum</th>
+            <th class='border-class'>Age</th>
+            <th class='border-class'>Name</th>
+            <th class='border-class'>MembershipType</th>
+            <th class='border-class'>ExpiryDate</th>
+        </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -59,7 +62,9 @@ if ($result->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 
 } else {
     echo "0 results";

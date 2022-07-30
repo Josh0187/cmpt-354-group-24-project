@@ -8,7 +8,7 @@ if (isset($_GET['sectionName'])) {
     $sql = "SELECT * FROM enclosures WHERE SectionName='$sectionName'";
     // nav bar
     echo "
-    <link rel='stylesheet' href='../styles.css'>
+    <link rel='stylesheet' href='../styles.css?version=2'>
     <ul class='nav-list'>
         <li class='nav-item'><a class='nav-link' href='../index.php'>Dashboard</a></li>
         <li class='nav-item'><a class='nav-link' href='../sections.php'>Sections</a></li>
@@ -27,7 +27,7 @@ else {
 
     // nav bar
     echo "
-    <link rel='stylesheet' href='styles.css'>
+    <link rel='stylesheet' href='styles.css?version=2'>
     <ul class='nav-list'>
         <li class='nav-item'><a class='nav-link' href='index.php'>Dashboard</a></li>
         <li class='nav-item'><a class='nav-link' href='sections.php'>Sections</a></li>
@@ -46,13 +46,17 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     echo "
-    <table>
-    <tr>
-        <th class='border-class'>Enclosure Num</th>
-        <th class='border-class'>Section Name</th>
-        <th class='border-class'>Enclosure Size</th>
-        <th class='border-class'>Environment Name</th>
-    </tr>
+    <table class='table-style'>
+    <thead>
+        <tr>
+            <th class='border-class'>Enclosure Num</th>
+            <th class='border-class'>Section Name</th>
+            <th class='border-class'>Enclosure Size</th>
+            <th class='border-class'>Environment Name</th>
+            <th class='border-class'>Update</th>
+        </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -66,9 +70,11 @@ if ($result->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
-    echo "<br><a href='AddEnclosureForm.php'>Add Enclosure</a>";
-    echo "<br><a href='AddEnvironmentForm.php'>Add Environment</a>";
+    echo "
+    </tbody>
+    </table>";
+    echo "<br><a class='form-link' href='AddEnclosureForm.php'>Add Enclosure</a>";
+    echo "<a class='form-link' href='AddEnvironmentForm.php'>Add Environment</a>";
 } else {
     echo "0 results";
 }

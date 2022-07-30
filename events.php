@@ -7,13 +7,13 @@ $result = $conn->query($sql);
 
 // nav bar
 echo "
-<link rel='stylesheet' href='styles.css'>
+<link rel='stylesheet' href='styles.css?version=2'>
 <ul class='nav-list'>
     <li class='nav-item'><a class='nav-link' href='index.php'>Dashboard</a></li>
-    <li class='nav-item'><a class='nav-link clicked' href='sections.php'>Sections</a></li>
+    <li class='nav-item'><a class='nav-link' href='sections.php'>Sections</a></li>
     <li class='nav-item'><a class='nav-link' href='enclosures.php'>Enclosures</a></li>
     <li class='nav-item'><a class='nav-link' href='animals.php'>Animals</a></li>
-    <li class='nav-item'><a class='nav-link' href='events.php'>Events</a></li>
+    <li class='nav-item'><a class='nav-link clicked' href='events.php'>Events</a></li>
     <li class='nav-item'><a class='nav-link' href='guest.php'>Guests</a></li>
     <li class='nav-item'><a class='nav-link' href='employees.php'>Employees</a></li>
 </ul> 
@@ -23,12 +23,15 @@ echo "
 //  EventName 	EventTime 	DurationMin 	
 if ($result->num_rows > 0) {
     echo "
-    <table>
-    <tr>
-        <th class='border-class'>EventName</th>
-        <th class='border-class'>EventTime</th>
-        <th class='border-class'>DurationMin</th>
-    </tr>
+    <table class='table-style'>
+    <thead>
+        <tr>
+            <th class='border-class'>EventName</th>
+            <th class='border-class'>EventTime</th>
+            <th class='border-class'>DurationMin</th>
+        </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -40,7 +43,9 @@ if ($result->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 } else {
     echo "0 results";
 }

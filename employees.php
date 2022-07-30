@@ -11,7 +11,7 @@ $result_managers = $conn->query($sql_managers);
 
 // nav bar
 echo "
-<link rel='stylesheet' href='styles.css'>
+<link rel='stylesheet' href='styles.css?version=2'>
 <ul class='nav-list'>
     <li class='nav-item'><a class='nav-link' href='index.php'>Dashboard</a></li>
     <li class='nav-item'><a class='nav-link' href='sections.php'>Sections</a></li>
@@ -31,20 +31,23 @@ echo "
 if ($result_salesworkers->num_rows > 0) {
     echo "
     <h1>Sales Workers:</h1>
-    <table>
-    <tr>
-        <th class='border-class'>EmployeeID</th>
-        <th class='border-class'>PhoneNum</th>
-        <th class='border-class'>EmployeeFirstName</th>
-        <th class='border-class'>EmployeeLastName</th>
-        <th class='border-class'>HireDate</th>
-        <th class='border-class'>EmployeeAge</th>
-        <th class='border-class'>SectionName</th>
-        <th class='border-class'>GiftShopNum</th>
-        <th class='border-class'>ConcessionNum</th>
-        <th class='border-class'>BoothNum</th>
-        <th class='border-class'>Role</th>
-    </tr>
+    <table class='table-style'>
+    <thead>
+        <tr>
+            <th class='border-class'>EmployeeID</th>
+            <th class='border-class'>PhoneNum</th>
+            <th class='border-class'>EmployeeFirstName</th>
+            <th class='border-class'>EmployeeLastName</th>
+            <th class='border-class'>HireDate</th>
+            <th class='border-class'>EmployeeAge</th>
+            <th class='border-class'>SectionName</th>
+            <th class='border-class'>GiftShopNum</th>
+            <th class='border-class'>ConcessionNum</th>
+            <th class='border-class'>BoothNum</th>
+            <th class='border-class'>Role</th>
+        </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result_salesworkers->fetch_assoc()) {
@@ -76,7 +79,9 @@ if ($result_salesworkers->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 } else {
     echo "0 results";
 }
@@ -85,18 +90,21 @@ if ($result_salesworkers->num_rows > 0) {
 if ($result_zookeepers->num_rows > 0) {
     echo "
     <h1>Zookeepers:</h1>
-    <table>
-    <tr>
-        <th class='border-class'>EmployeeID</th>
-        <th class='border-class'>PhoneNum</th>
-        <th class='border-class'>EmployeeFirstName</th>
-        <th class='border-class'>EmployeeLastName</th>
-        <th class='border-class'>HireDate</th>
-        <th class='border-class'>EmployeeAge</th>
-        <th class='border-class'>SectionName</th>
-        <th class='border-class'>ZooKeeperType</th>
-        <th class='border-class'>EnclosureNum</th>
-    </tr>
+    <table class='table-style'>
+    <thead>
+        <tr>
+            <th class='border-class'>EmployeeID</th>
+            <th class='border-class'>PhoneNum</th>
+            <th class='border-class'>EmployeeFirstName</th>
+            <th class='border-class'>EmployeeLastName</th>
+            <th class='border-class'>HireDate</th>
+            <th class='border-class'>EmployeeAge</th>
+            <th class='border-class'>SectionName</th>
+            <th class='border-class'>ZooKeeperType</th>
+            <th class='border-class'>EnclosureNum</th>
+        </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result_zookeepers->fetch_assoc()) {
@@ -114,25 +122,31 @@ if ($result_zookeepers->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 } else {
     echo "0 results";
+    
 }
 
 // display managers
 if ($result_managers->num_rows > 0) {
     echo "
     <h1>Managers:</h1>
-    <table>
-    <tr>
-        <th class='border-class'>EmployeeID</th>
-        <th class='border-class'>PhoneNum</th>
-        <th class='border-class'>EmployeeFirstName</th>
-        <th class='border-class'>EmployeeLastName</th>
-        <th class='border-class'>HireDate</th>
-        <th class='border-class'>EmployeeAge</th>
-        <th class='border-class'>SectionName</th>
-    </tr>
+    <table class='table-style'>
+    <thead>
+        <tr>
+            <th class='border-class'>EmployeeID</th>
+            <th class='border-class'>PhoneNum</th>
+            <th class='border-class'>EmployeeFirstName</th>
+            <th class='border-class'>EmployeeLastName</th>
+            <th class='border-class'>HireDate</th>
+            <th class='border-class'>EmployeeAge</th>
+            <th class='border-class'>SectionName</th>
+        </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result_managers->fetch_assoc()) {
@@ -148,7 +162,9 @@ if ($result_managers->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 } else {
     echo "0 results";
 }
