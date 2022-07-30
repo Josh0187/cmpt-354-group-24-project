@@ -12,7 +12,7 @@ echo "
     <li class='nav-item'><a class='nav-link' href='sections.php'>Sections</a></li>
     <li class='nav-item'><a class='nav-link' href='enclosures.php'>Enclosures</a></li>
     <li class='nav-item'><a class='nav-link' href='Animals.php'>Animals</a></li>
-    <li class='nav-item'><a class='nav-link' href='#'>Events</a></li>
+    <li class='nav-item'><a class='nav-link' href='events.php'>Events</a></li>
     <li class='nav-item'><a class='nav-link clicked' href='guest.php'>Guests</a></li>
     <li class='nav-item'><a class='nav-link' href='employees.php'>Employees</a></li>
 </ul> 
