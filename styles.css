@@ -1,8 +1,10 @@
 html, body {
     margin:0;
     padding:0;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
+/* nav bar styles */
 .nav-item {
     float: left;
 }
@@ -30,4 +32,92 @@ html, body {
 .clicked {
     background-color: #04AA6D;
 }
+
+/* table styles */
+.table-style {
+    border-collapse: collapse;
+    margin: 25px 20px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table-style thead tr {
+    background-color: #04AA6D;
+    color: #ffffff;
+    text-align: left;
+}
+
+.table-style th,
+.table-style td {
+    padding: 12px 15px;
+}
+
+.table-style tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-style tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table-style tbody tr:last-of-type {
+    border-bottom: 2px solid #04AA6D;
+}
+
+/* form styles */
+
+.form-style {
+	max-width: 400px;
+	font: 13px;
+    padding-left: 20px;
+}
+
+.form-style input, .form-style select{
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	outline: none;	
+}
+
+.form-style input[type=submit] {
+    background: #04AA6D;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: #fff;
+    text-decoration: none;
+}
+
+.form-link {
+    background: #04AA6D;
+	padding: 8px 15px 8px 15px;
+    margin-left: 20px;
+	border: none;
+	color: #fff;
+    text-decoration: none;
+}
+
+.form-style label {
+    margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+
+/* titles */
+h1, h2, h3 {
+    margin-left: 20px;
+}
+
+
+
+
 

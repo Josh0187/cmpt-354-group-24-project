@@ -6,7 +6,7 @@
 <html>
   <head>
     <title>Zoo</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?version=2">
   </head>
   <body>
     <ul class="nav-list">
@@ -22,7 +22,7 @@
   </body>
 </html>
 
-<h1>Counts:
+<h2>Counts:
 <?php
 if (isset($_GET['countOf'])) {
   $countOf = $_GET['countOf'];
@@ -35,19 +35,19 @@ if (isset($_GET['countOf'])) {
   ";
 }
 ?>
-</h1>
+</h2>
 
-<form action='index.php' method='get'>
+<form class='form-style' action='index.php' method='get'>
   <select name='countOf'>
     <option value='zoosections'>Sections</option>
     <option value='enclosures'>Enclosures</option>
     <option value='animals'>Animals</option>
     <option value='guests'>Guests</option>
-    <input type='submit' value='submit'></input>
   </select>
+  <input type='submit' value='submit'>
 </form>
 
-<h1>Average Animal Weight:
+<h2>Average Animal Weight:
 <?php 
 if (isset($_GET['weightOf'])) {
   $weightOf = $_GET['weightOf'];
@@ -61,9 +61,10 @@ if (isset($_GET['weightOf'])) {
   ";  
 }
 ?>
-</h1>
+</h2>
 
-<form action='index.php' method='get'>
+
+<form class='form-style' action='index.php' method='get'>
   <?php
             $sql = "SELECT DISTINCT Genus FROM animals";
             $result = $conn->query($sql);
@@ -76,12 +77,12 @@ if (isset($_GET['weightOf'])) {
                 echo "<option value='$weightOf'>$weightOf</option>";
             }
         ?>
-    </select>
-    <input type='submit' value='submit'></input>
-  </select>
+        </select>
+    <input type='submit' value='submit'>
 </form>
 <br>
-<form action="index.php" method="get">
+
+<form class='form-style' action="index.php" method="get">
   <input type="submit" name="AllAverageWeights" value="Display All Average Weights">
 </form>
 
@@ -97,3 +98,53 @@ if (isset($_GET['AllAverageWeights'])) {
   }
 }
 ?>
+
+<h2>Find animals kept by zookeeper:</h2>
+  <form class='form-style' action='index.php' method='get'>
+    <?php
+      $sql = "SELECT  EmployeeID ,EmployeeFirstName, EmployeeLastName FROM zookeepers";
+      $result = $conn->query($sql);
+    ?>
+    <select name="employeeID">
+    <?php
+      while ($rows = $result->fetch_assoc()) {
+            $firstName = $rows['EmployeeFirstName'];
+                  $lastName = $rows['EmployeeLastName'];
+                  $employeeID = $rows['EmployeeID'];
+                  echo "<option value=$employeeID>$firstName $lastName</option>";
+              }
+          ?>
+      </select>
+      <input type='submit' value='submit'>
+  </form>
+<?php 
+if (isset($_GET['employeeID'])) {
+  $employeeID = $_GET['employeeID'];
+  // division query - Find GivenName, Species, and Genus of animals that live in all enclosures kept by zookeeper with employeeID 
+  $sql = "SELECT a.GivenName, Species, Genus FROM animals a WHERE NOT EXISTS (SELECT * from zookeepers z WHERE EmployeeID=$employeeID AND NOT EXISTS (SELECT e.EnclosureNum, e.SectionName FROM enclosures e WHERE a.EnclosureNum=e.EnclosureNum AND a.SectionName=e.SectionName AND z.EnclosureNum=e.EnclosureNum AND z.SectionName=e.SectionName))";
+
+  $result_animals = $conn->query($sql);
+
+  if ($result_animals->num_rows > 0) {
+    while ($rows = $result_animals->fetch_assoc()) {
+      $givenName = $rows['GivenName'];
+      $species = $rows['Species'];
+      $genus = $rows['Genus'];
+
+      // get common name of animal using species and genus
+      $sql_commonName = "SELECT CommonName FROM classification WHERE Species='$species' AND Genus='$genus'";
+      $result_commonName = $conn->query($sql_commonName);
+      $row = $result_commonName->fetch_assoc();
+      $commonName = $row['CommonName'];
+
+      echo "<h3>$givenName - $commonName</h3>";
+    }
+  }
+  else {
+    echo "<h3>0 results.</h3>";
+  }
+
+}
+?>
+
+
