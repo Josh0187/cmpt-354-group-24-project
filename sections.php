@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
         ";
     }
     echo "</table>";
-    echo "<br><a href='createSection.html'>Create Section</a>";
+    echo "<br><a href='createSectionForm.php'>Create Section</a>";
 } else {
     echo "0 results";
 }
