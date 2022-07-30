@@ -1,8 +1,7 @@
-<?php
+<?php 
 include 'connect.php';
+
 $conn = OpenCon();
-$sql = "SELECT * FROM guests, memberships WHERE guests.GuestID = memberships.GuestID";
-$result = $conn->query($sql);
 
 // nav bar
 echo "
@@ -19,14 +18,27 @@ echo "
 <h1>Guests:</h1>
 ";
 
+$GuestName = $_POST['GuestName'];
+
+$sql = "SELECT * FROM guests, memberships WHERE GuestName = '$GuestName' AND guests.GuestID = memberships.GuestID";
+$result = $conn->query($sql);
+
+if (!$result) {
+    echo "Error:";
+    echo "<br>";
+    echo $conn->error;
+}
+
 //  	GuestID 	Gender 	GuestPhoneNum 	GuestAge 	GuestName
-// memberships:  	MemberID 	DateCreated 	ExpiryDate 	MemberType 	BoothNum 	GuestID 	
 if ($result->num_rows > 0) {
     echo "
     <table>
     <tr>
         <th class='border-class'></th>
         <th class='border-class'>GuestID</th>
+        <th class='border-class'>Gender</th>
+        <th class='border-class'>PhoneNum</th>
+        <th class='border-class'>Age</th>
         <th class='border-class'>Name</th>
         <th class='border-class'>MembershipType</th>
         <th class='border-class'>ExpiryDate</th>
@@ -38,6 +50,9 @@ if ($result->num_rows > 0) {
             <tr>
                 <th class='border-class'></th>
                 <td class='border-class'>".$row["GuestID"]."</td>
+                <td class='border-class'>".$row["Gender"]."</td>
+                <td class='border-class'>".$row["GuestPhoneNum"]."</td>
+                <td class='border-class'>".$row["GuestAge"]."</td>
                 <td class='border-class'>".$row["GuestName"]."</td>
                 <td class='border-class'>".$row["MemberType"]."</td>
                 <td class='border-class'>".$row["ExpiryDate"]."</td>
@@ -49,27 +64,4 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-
-echo "
-<h1>Search Guests:</h1>
-<form action='SearchGuests.php' method='post'>
-<label>GuestName</label>
-<input name='GuestName' type='text' placeholder='Type Here'>
-<input type='submit' name='submit' value='Search'>
-</form>
-<br>
-";
-
-echo "
-    <form action='GuestView.php' method='post'>
-        <select name='view'>
-            <option value='GuestPhoneNum'>Phone Number</option>
-            <option value='GuestAge'>Age</option>
-            <option value='Gender'>Gender</option>
-        </select>
-        <input type='submit' name='submit' value='Submit'>
-    </form>
-";
-
-CloseCon($conn);
 ?>

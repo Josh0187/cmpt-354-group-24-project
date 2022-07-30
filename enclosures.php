@@ -10,7 +10,7 @@ if (isset($_GET['sectionName'])) {
     echo "
     <link rel='stylesheet' href='../styles.css'>
     <ul class='nav-list'>
-        <li class='nav-item'><a class='nav-link' href='../index.html'>Dashboard</a></li>
+        <li class='nav-item'><a class='nav-link' href='../index.php'>Dashboard</a></li>
         <li class='nav-item'><a class='nav-link' href='../sections.php'>Sections</a></li>
         <li class='nav-item'><a class='nav-link clicked' href='../enclosures.php'>Enclosures</a></li>
         <li class='nav-item'><a class='nav-link' href='../animals.php'>Animals</a></li>
@@ -29,13 +29,13 @@ else {
     echo "
     <link rel='stylesheet' href='styles.css'>
     <ul class='nav-list'>
-        <li class='nav-item'><a class='nav-link' href='index.html'>Dashboard</a></li>
+        <li class='nav-item'><a class='nav-link' href='index.php'>Dashboard</a></li>
         <li class='nav-item'><a class='nav-link' href='sections.php'>Sections</a></li>
         <li class='nav-item'><a class='nav-link clicked' href='enclosures.php'>Enclosures</a></li>
         <li class='nav-item'><a class='nav-link' href='animals.php'>Animals</a></li>
-        <li class='nav-item'><a class='nav-link' href='#'>Events</a></li>
-        <li class='nav-item'><a class='nav-link' href='#'>Guests</a></li>
-        <li class='nav-item'><a class='nav-link' href='#'>Employees</a></li>
+        <li class='nav-item'><a class='nav-link' href='events.php'>Events</a></li>
+        <li class='nav-item'><a class='nav-link' href='guest.php'>Guests</a></li>
+        <li class='nav-item'><a class='nav-link' href='employees.php'>Employees</a></li>
     </ul> 
     <h1>Enclosures:</h1>
 ";

@@ -2,7 +2,7 @@
 include 'connect.php';
 
 $conn = OpenCon();
-$sql = "SELECT * FROM zoosections";
+$sql = "SELECT * FROM events";
 $result = $conn->query($sql);
 
 // nav bar
@@ -17,32 +17,30 @@ echo "
     <li class='nav-item'><a class='nav-link' href='guest.php'>Guests</a></li>
     <li class='nav-item'><a class='nav-link' href='employees.php'>Employees</a></li>
 </ul> 
-<h1>Sections:</h1>
+<h1>Events:</h1>
 ";
 
+//  EventName 	EventTime 	DurationMin 	
 if ($result->num_rows > 0) {
     echo "
     <table>
     <tr>
-        <th class='border-class'>Section Name</th>
-        <th class='border-class'>Section Size</th>
+        <th class='border-class'>EventName</th>
+        <th class='border-class'>EventTime</th>
+        <th class='border-class'>DurationMin</th>
     </tr>
     ";
     // output data of each row
     while($row = $result->fetch_assoc()) {
         echo "
             <tr>
-                <td class='border-class'>".$row["SectionName"]."</td>
-                <td class='border-class'>".$row["SectionSize"]."</td>
-                <td><a href='giftshops.php/?sectionName=".$row["SectionName"]."'>Giftshops</a><td>
-                <td><a href='concessions.php/?sectionName=".$row["SectionName"]."'>Concessions</a></td>
-                <td><a href='enclosures.php/?sectionName=".$row["SectionName"]."'>Enclosures</a></td>
-                <td><a href='delete.php?table=zoosections&col=SectionName&val=".$row["SectionName"]."&back=sections.php'>Delete</a></td>
+                <td class='border-class'>".$row["EventName"]."</td>
+                <td class='border-class'>".$row["EventTime"]."</td>
+                <td class='border-class'>".$row["DurationMin"]."</td>
             </tr>
         ";
     }
     echo "</table>";
-    echo "<br><a href='createSection.html'>Create Section</a>";
 } else {
     echo "0 results";
 }
