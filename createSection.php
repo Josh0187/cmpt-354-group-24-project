@@ -3,10 +3,11 @@ include 'connect.php';
 
 $conn = OpenCon();
 
-$sectionName = $_POST['sectionName'];
-$sectionSize = $_POST['sectionSize'];
+$sectionName = $_POST['SectionName'];
+$sectionSize = $_POST['SectionSize'];
 
 $sql = "INSERT INTO zoosections VALUES ('$sectionName', $sectionSize)";
+echo $sql;
 $result = $conn->query($sql);
 
 if ($result) {
@@ -15,6 +16,6 @@ if ($result) {
     echo $conn->error;
 }
 else {
-    header('Location: sections.php');
+    //header('Location: sections.php');
 }
 ?>

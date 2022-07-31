@@ -38,7 +38,7 @@ if (isset($_GET['countOf'])) {
 </h2>
 
 <form class='form-style' action='index.php' method='get'>
-  <select name='countOf'>
+  <select name='countOf' style='display:inline;'>
     <option value='zoosections'>Sections</option>
     <option value='enclosures'>Enclosures</option>
     <option value='animals'>Animals</option>
@@ -108,7 +108,7 @@ if (isset($_GET['AllAverageWeights'])) {
     <select name="employeeID">
     <?php
       while ($rows = $result->fetch_assoc()) {
-            $firstName = $rows['EmployeeFirstName'];
+                  $firstName = $rows['EmployeeFirstName'];
                   $lastName = $rows['EmployeeLastName'];
                   $employeeID = $rows['EmployeeID'];
                   echo "<option value=$employeeID>$firstName $lastName</option>";
@@ -122,9 +122,14 @@ if (isset($_GET['employeeID'])) {
   $employeeID = $_GET['employeeID'];
   // division query - Find GivenName, Species, and Genus of animals that live in all enclosures kept by zookeeper with employeeID 
   $sql = "SELECT a.GivenName, Species, Genus FROM animals a WHERE NOT EXISTS (SELECT * from zookeepers z WHERE EmployeeID=$employeeID AND NOT EXISTS (SELECT e.EnclosureNum, e.SectionName FROM enclosures e WHERE a.EnclosureNum=e.EnclosureNum AND a.SectionName=e.SectionName AND z.EnclosureNum=e.EnclosureNum AND z.SectionName=e.SectionName))";
-
   $result_animals = $conn->query($sql);
+  $sql_getName = "SELECT EmployeeFirstName FROM zookeepers WHERE EmployeeID=$employeeID";
+  $result_getName = $conn->query($sql_getName);
 
+  $row = $result_getName->fetch_assoc();
+  $zookeeperName = $row['EmployeeFirstName'];
+
+  echo "<h3>Animals kept by:  $zookeeperName</h3>";
   if ($result_animals->num_rows > 0) {
     while ($rows = $result_animals->fetch_assoc()) {
       $givenName = $rows['GivenName'];

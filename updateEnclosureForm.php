@@ -22,16 +22,16 @@
 </ul> 
 <h1>Update Enclosure:</h1>
 <?php
-    echo "<form action='../updateEnclosure.php/?sectionName=".$row["SectionName"]."&enclosureNum=".$row["EnclosureNum"]."' method='post'>";
+    echo "<form class='form-style' action='../updateEnclosure.php/?sectionName=".$row["SectionName"]."&enclosureNum=".$row["EnclosureNum"]."' method='post'>";
 ?>
         <Label>Enclosure Num</Label>
         <?php
-            echo "<input type='text' name='EnclosureNum' value='".$row["EnclosureNum"]."'>";
+            echo "<p>".$row["EnclosureNum"]."</p>";
         ?>
         <br>
         <Label>Section Name</Label>
         <?php
-            echo "<input type='text' name='SectionName' value='".$row["SectionName"]."'>";
+            echo "<p>".$row["SectionName"]."</p>";
         ?>
         <br>
         <Label>Enclosure Size</Label>
