@@ -11,10 +11,10 @@
 <h1>Create Section:</h1>
 <form class="form-style" action="createSection.php" method="post">
     <label>SectionName</label>
-    <input name="Section Name:" type="text" placeholder="Type Here">
+    <input name="SectionName" type="text" placeholder="Type Here">
     <br>
     <label>SectionSize</label>
-    <input name="Section Size" type="text" placeholder="Type Here">
+    <input name="SectionSize" type="text" placeholder="Type Here">
     <br>
     <input type="submit" name="submit" value="Create Section">
 </form>

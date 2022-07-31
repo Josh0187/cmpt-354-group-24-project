@@ -8,12 +8,10 @@ if (isset($_GET['sectionName'])) {
     $originalEnclosureNum = $_GET['enclosureNum'];
 }
 
-$EnclosureNum = $_POST['EnclosureNum'];
-$SectionName = $_POST['SectionName'];
 $EnclosureSize = $_POST['EnclosureSize'];
 $EnvironmentName = $_POST['EnvironmentName'];
 
-$sql = "UPDATE `enclosures` SET EnclosureNum='$EnclosureNum', SectionName='$SectionName', EnclosureSize='$EnclosureSize', EnvironmentName='$EnvironmentName' WHERE EnclosureNum='$originalEnclosureNum' AND SectionName='$originalSectionName'";
+$sql = "UPDATE `enclosures` SET EnclosureSize='$EnclosureSize', EnvironmentName='$EnvironmentName' WHERE EnclosureNum='$originalEnclosureNum' AND SectionName='$originalSectionName'";
 $result = $conn->query($sql);
 
 if (!$result) {
