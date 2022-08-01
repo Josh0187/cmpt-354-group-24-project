@@ -83,18 +83,20 @@ if (isset($_GET['weightOf'])) {
 <br>
 
 <form class='form-style' action="index.php" method="get">
-  <input type="submit" name="AllAverageWeights" value="Display All Average Weights">
+  <input type="submit" name="underweight" value="Display Underweight Animals">
 </form>
 
 <?php 
-if (isset($_GET['AllAverageWeights'])) {
-  $sql = "SELECT AVG(Weight), Genus FROM animals GROUP BY Genus;";
+if (isset($_GET['underweight'])) {
+  // selects genus, givenName, and weight of animals that are under the average weight of their genus (nested aggregation with group-by)
+  $sql = "SELECT a.Genus, a.GivenName, a.Weight FROM animals a WHERE a.Weight < (SELECT a2.avgweight FROM (SELECT AVG(Weight) as avgweight ,Genus FROM animals GROUP BY Genus) a2 WHERE a2.Genus = a.Genus);";
   $result = $conn->query($sql);
 
   while ($rows = $result->fetch_assoc()) {
       $genus = $rows['Genus'];
-      $avgWeight = $rows['AVG(Weight)'];
-      echo "<h2>$genus: $avgWeight kg</h2>";
+      $avgWeight = $rows['Weight'];
+      $givenName = $rows['GivenName'];
+      echo "<h3>$givenName, $genus: $avgWeight kg</h3>";
   }
 }
 ?>
