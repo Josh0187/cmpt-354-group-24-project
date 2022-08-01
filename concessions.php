@@ -35,11 +35,14 @@ echo "
 
 if ($result->num_rows > 0) {
     echo "
-    <table>
+    <table class='table-style'>
+    <thead>
     <tr>
         <th class='border-class'>Concession Number</th>
         <th class='border-class'>Section Name</th>
     </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -50,7 +53,9 @@ if ($result->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 
 } else {
     echo "0 results";

@@ -4,7 +4,7 @@ $conn = OpenCon();
 
 // Nav bar
 echo "   
-<link rel='stylesheet' href='../styles.css'>
+<link rel='stylesheet' href='../styles.css?version=2'>
 <ul class='nav-list'>
     <li class='nav-item'><a class='nav-link' href='../index.php'>Dashboard</a></li>
     <li class='nav-item'><a class='nav-link' href='../sections.php'>Sections</a></li>
@@ -35,11 +35,14 @@ echo "
 
 if ($result->num_rows > 0) {
     echo "
-    <table>
+    <table class='table-style'>
+    <thead>
     <tr>
         <th class='border-class'>Giftshop Number</th>
         <th class='border-class'>Section Name</th>
     </tr>
+    </thead>
+    <tbody>
     ";
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -50,7 +53,9 @@ if ($result->num_rows > 0) {
             </tr>
         ";
     }
-    echo "</table>";
+    echo "
+    </tbody>
+    </table>";
 
 } else {
     echo "0 results";
