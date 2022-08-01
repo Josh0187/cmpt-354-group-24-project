@@ -14,8 +14,8 @@
 <ul class='nav-list'>
     <li class='nav-item'><a class='nav-link' href='../index.php'>Dashboard</a></li>
     <li class='nav-item'><a class='nav-link' href='../sections.php'>Sections</a></li>
-    <li class='nav-item'><a class='nav-link' href='../enclosures.php'>Enclosures</a></li>
-    <li class='nav-item'><a class='nav-link clicked' href='../animals.php'>Animals</a></li>
+    <li class='nav-item'><a class='nav-link clicked' href='../enclosures.php'>Enclosures</a></li>
+    <li class='nav-item'><a class='nav-link' href='../animals.php'>Animals</a></li>
     <li class='nav-item'><a class='nav-link' href='../events.php'>Events</a></li>
     <li class='nav-item'><a class='nav-link' href='../guest.php'>Guests</a></li>
     <li class='nav-item'><a class='nav-link' href='../employees.php'>Employees</a></li>
@@ -41,8 +41,17 @@
         <br>
         <Label>Environment Name</Label>
         <?php
-            echo "<input type='text' name='EnvironmentName' value='".$row["EnvironmentName"]."'>";
+            $sql = "SELECT EnvironmentName FROM environment";
+            $result = $conn->query($sql);
         ?>
+        <select name="EnvironmentName">
+        <?php
+            while ($rows = $result->fetch_assoc()) {
+                $envName = $rows['EnvironmentName'];
+                echo "<option value='$envName'>$envName</option>";
+            }
+        ?>
+        </select>
         <br>
         <input type="submit" name="submit" value="Update Enclosure">
 </form>
